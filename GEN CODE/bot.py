@@ -1,9 +1,15 @@
+import os
 import asyncio
 import random
 import discord
 from discord.ext import commands
+from dotevn import load_dotenv
 
-client = commands.Bot(command_prefix = ['g ','G','Gen','gen'], help_command = None)
+intents = discord.Intents.default()
+intents.message_content = True
+
+
+client = commands.Bot(command_prefix = ['g ','G','Gen','gen'], help_command = None, intents = intents)
 client.remove_command('help')
 
 bite_images = [
@@ -184,12 +190,14 @@ async def rps(ctx, help="play a totally fair and fun game of rock, paper, scisso
 #    slapped = ", ".join(x.name for x in members)
 #    await ctx.send('{} just got slapped for {}'.format(slapped, reason))
 
-input("prompt: ")
-
-client.run('ODMyNDc4MDM0ODI4ODUzMjU3.YHkXlg.4Y1zlO-85QoGM8XgFlH4rJauS4k')
 
 
-input("prompt: ")
+client.run(os.getenv("DISCORD_TOKEN"))
+
+
+#ODMyNDc4MDM0ODI4ODUzMjU3.YHkXlg.4Y1zlO-85QoGM8XgFlH4rJauS4k
+
+
 #import pdb; pdb.set_trace()
 
 #def generate_response(user_input):
